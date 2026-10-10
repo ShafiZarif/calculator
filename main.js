@@ -22,3 +22,17 @@ const divide = function (firstNumber, secondNumber) {
 let numberOne = '';
 let numberTwo = '';
 let operator = '';
+
+const operate = function (numberOne, numberTwo, operator) {
+  if (operator === '+') {
+    return add(numberOne, numberTwo);
+  } else if (operator === '-') {
+    return subtract(numberOne, numberTwo);
+  } else if (operator === '*') {
+    return multiply(numberOne, numberTwo);
+  } else if (operator === '/') {
+    return divide(numberOne, numberTwo);
+  } else {
+    return console.log(`'Invalid operator entered: ${operator}`);
+  }
+};
