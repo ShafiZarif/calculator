@@ -17,3 +17,5 @@ const multiply = function (firstNumber, secondNumber) {
 const divide = function (firstNumber, secondNumber) {
   return firstNumber / secondNumber;
 };
+
+// Creating Variables for operations
