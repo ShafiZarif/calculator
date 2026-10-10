@@ -12,3 +12,7 @@ const subtract = function (firstNumber, secondNumber) {
 const multiply = function (firstNumber, secondNumber) {
   return firstNumber * secondNumber;
 };
+
+const divide = function (firstNumber, secondNumber) {
+  return firstNumber / secondNumber;
+};
