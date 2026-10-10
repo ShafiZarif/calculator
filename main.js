@@ -19,3 +19,6 @@ const divide = function (firstNumber, secondNumber) {
 };
 
 // Creating Variables for operations
+let numberOne = '';
+let numberTwo = '';
+let operator = '';
