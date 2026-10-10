@@ -23,6 +23,7 @@ let numberOne = '';
 let numberTwo = '';
 let operator = '';
 
+// Operator function
 const operate = function (numberOne, numberTwo, operator) {
   if (operator === '+') {
     return add(numberOne, numberTwo);
