@@ -27,4 +27,5 @@
   flex-wrap: wrap
 }
 #calc-button-row button {
+  width: 25%;
 }
