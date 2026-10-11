@@ -37,3 +37,6 @@
   border-width: 1px 1px 0px 0;
   border-style: solid;
 }
+#calc-button-row #ac{
+  color: #ff7665;
+}
