@@ -49,3 +49,6 @@
 #calc-button-row button:active{
   position: relative;top: 1px;
 }
+#calc-button-row button:hover{
+  background-color: #3e4b5c;
+}
