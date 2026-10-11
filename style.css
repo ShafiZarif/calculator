@@ -23,4 +23,7 @@
 }
 /*Calculator Buttons*/
 #calc-button-row {
+  display: flex;
+}
+#calc-button-row button {
 }
