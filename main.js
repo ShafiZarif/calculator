@@ -37,3 +37,5 @@ const operate = function (numberOne, numberTwo, operator) {
     return console.log(`'Invalid operator entered: ${operator}`);
   }
 };
+
+// Functions to catch numbers, update variables and show them in the display
