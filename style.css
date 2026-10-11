@@ -24,6 +24,7 @@
 /*Calculator Buttons*/
 #calc-button-row {
   display: flex;
+  flex-wrap: wrap
 }
 #calc-button-row button {
 }
