@@ -31,7 +31,7 @@ const operate = function (numberOne, operator, numberTwo) {
     return subtract(numberOne, numberTwo);
   } else if (operator === '×') {
     return multiply(numberOne, numberTwo);
-  } else if (operator === '/') {
+  } else if (operator === '÷') {
     return divide(numberOne, numberTwo);
   } else {
     return console.log(`'Invalid operator entered: ${operator}`);
