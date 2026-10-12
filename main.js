@@ -69,9 +69,13 @@ btns.addEventListener('click', (e) => {
       }
     }
     if (e.target.id === 'equal') {
+      let result = operate(numberOne, operator, numberTwo);
       if (numberOne !== '' && numberTwo !== '' && operator !== '') {
-        const result = operate(numberOne, operator, numberTwo);
         typedText.textContent = result;
+        numberOne = String(result);
+      } else {
+        numberOne = result;
+        typedText.textContent = numberOne + operator + numberTwo;
       }
     }
   } else {
