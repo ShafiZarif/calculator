@@ -45,12 +45,12 @@ const typedText = document.querySelector('#calc-typed')
 
 btns.addEventListener('click', (e) =>{
   if (e.target.classList.contains('number')){
-   console.log(e.target.textContent)
+  //  console.log(e.target.textContent)
     numberOne += e.target.textContent
     typedText.textContent = numberOne
    }
    if (e.target.classList.contains ('option')) {
-    console.log(`option was clicked`)
+    // console.log(`option was clicked`)
     operator += e.target.textContent
     typedText.textContent += operator
    }
