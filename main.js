@@ -48,5 +48,11 @@ btns.addEventListener('click', (e) =>{
    console.log(e.target.textContent)
     numberOne += e.target.textContent
     typedText.textContent = numberOne
-   } 
+   }
+   if (e.target.classList.contains ('option')) {
+    console.log(`option was clicked`)
+    operator += e.target.textContent
+    typedText.textContent += operator
+   }
 })
+
