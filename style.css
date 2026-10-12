@@ -27,7 +27,7 @@
 /*Calculator Buttons*/
 #calc-button-row {
   display: flex;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 #calc-button-row button {
   width: 25%;
@@ -40,19 +40,23 @@
   border-width: 1px 1px 0px 0;
   border-style: solid;
 }
-#calc-button-row #ac{
+#calc-button-row #ac {
   color: #ff7665;
 }
 #calc-button-row button.option {
   color: #ffbc56;
 }
+#calc-button-row button#equal {
+  color: greenyellow;
+}
 /*The border has been managed in every fourth button so that the design will not distract.*/
-#calc-button-row button:nth-child(4n){
+#calc-button-row button:nth-child(4n) {
   border-right: none;
 }
-#calc-button-row button:active{
-  position: relative;top: 1px;
+#calc-button-row button:active {
+  position: relative;
+  top: 1px;
 }
-#calc-button-row button:hover{
+#calc-button-row button:hover {
   background-color: #3e4b5c;
 }
