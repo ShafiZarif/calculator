@@ -39,3 +39,13 @@ const operate = function (numberOne, numberTwo, operator) {
 };
 
 // Functions to catch numbers, update variables and show them in the display
+const btns = document.querySelector('#calc-button-row')
+
+btns.addEventListener('click', (e) =>{
+  if (e.target.classList.contains('number')){
+   console.log(`${e.target.classList} was clicked`) 
+   }
+})
+
+console.log(btns)
+
