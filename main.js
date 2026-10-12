@@ -44,14 +44,37 @@ const btns = document.querySelector('#calc-button-row');
 const typedText = document.querySelector('#calc-typed');
 
 btns.addEventListener('click', (e) => {
-  if (e.target.classList.contains('number')) {
-    //  console.log(e.target.textContent)
-    numberOne += e.target.textContent;
-    typedText.textContent = numberOne;
-  }
-  if (e.target.classList.contains('option')) {
-    // console.log(`option was clicked`)
-    operator += e.target.textContent;
-    typedText.textContent += operator;
+  if (numberOne.length + operator.length + numberTwo.length < 15) {
+    if (e.target.classList.contains('number')) {
+      //  console.log(e.target.textContent)
+      if (operator === '') {
+        numberOne += e.target.textContent;
+        typedText.textContent = numberOne + operator + numberTwo;
+      } else {
+        numberTwo += e.target.textContent;
+        typedText.textContent = numberOne + operator + numberTwo;
+      }
+    }
+    if (e.target.classList.contains('option')) {
+      // console.log(`option was clicked`)
+      if (operator.length < 1) {
+        operator += e.target.textContent;
+        typedText.textContent = numberOne + operator + numberTwo;
+      } else if (operator.length === 1) {
+        operator = '';
+        operator += e.target.textContent;
+        typedText.textContent = numberOne + operator + numberTwo;
+      } else {
+        return;
+      }
+    }
+    if (e.target.id === 'equal') {
+      if (numberOne !== '' && numberTwo !== '' && operator !== '') {
+        const result = operate(numberOne, operator, numberTwo);
+        typedText.textContent = result;
+      }
+    }
+  } else {
+    return;
   }
 });
