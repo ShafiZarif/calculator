@@ -24,7 +24,7 @@ let numberTwo = '';
 let operator = '';
 
 // Operator function
-const operate = function (numberOne, numberTwo, operator) {
+const operate = function (numberOne, operator, numberTwo) {
   if (operator === '+') {
     return add(numberOne, numberTwo);
   } else if (operator === '-') {
