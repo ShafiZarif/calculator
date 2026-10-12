@@ -29,7 +29,7 @@ const operate = function (numberOne, operator, numberTwo) {
     return add(numberOne, numberTwo);
   } else if (operator === '-') {
     return subtract(numberOne, numberTwo);
-  } else if (operator === '*') {
+  } else if (operator === '×') {
     return multiply(numberOne, numberTwo);
   } else if (operator === '/') {
     return divide(numberOne, numberTwo);
