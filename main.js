@@ -84,6 +84,9 @@ btns.addEventListener('click', (e) => {
         sum = result;
         typedText.textContent = sum;
         numberOne = String(sum);
+      } else if (numberOne === '' && operator === '' && numberTwo === '') {
+        sum = 0;
+        typedText.textContent = String(sum);
       } else {
         numberOne = result;
         typedText.textContent = numberOne + operator + numberTwo;
