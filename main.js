@@ -22,6 +22,7 @@ const divide = function (firstNumber, secondNumber) {
 let numberOne = '';
 let numberTwo = '';
 let operator = '';
+let sum = 0;
 
 // Operator function
 const operate = function (numberOne, operator, numberTwo) {
@@ -50,6 +51,9 @@ btns.addEventListener('click', (e) => {
       if (operator === '') {
         numberOne += e.target.textContent;
         typedText.textContent = numberOne + operator + numberTwo;
+      } else if (operator !== '' && numberOne !== '') {
+        numberTwo += e.target.textContent;
+        typedText.textContent = numberOne + operator + numberTwo;
       } else {
         numberTwo += e.target.textContent;
         typedText.textContent = numberOne + operator + numberTwo;
@@ -60,9 +64,15 @@ btns.addEventListener('click', (e) => {
       if (operator.length < 1) {
         operator += e.target.textContent;
         typedText.textContent = numberOne + operator + numberTwo;
-      } else if (operator.length === 1) {
+      } else if (operator.length === 1 && sum === 0 && numberTwo === '') {
+        operator = e.target.textContent;
+        typedText.textContent = numberOne + operator + numberTwo;
+      } else if (operator.length === 1 && numberTwo !== '') {
+        let result = operate(numberOne, operator, numberTwo);
         operator = '';
+        numberTwo = '';
         operator += e.target.textContent;
+        numberOne = String(result);
         typedText.textContent = numberOne + operator + numberTwo;
       } else {
         return;
@@ -71,12 +81,14 @@ btns.addEventListener('click', (e) => {
     if (e.target.id === 'equal') {
       let result = operate(numberOne, operator, numberTwo);
       if (numberOne !== '' && numberTwo !== '' && operator !== '') {
-        typedText.textContent = result;
-        numberOne = String(result);
+        sum = result;
+        typedText.textContent = sum;
+        numberOne = String(sum);
       } else {
         numberOne = result;
         typedText.textContent = numberOne + operator + numberTwo;
       }
+      console.log(sum);
     }
   } else {
     return;
