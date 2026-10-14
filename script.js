@@ -57,7 +57,7 @@ function operate(a, b, operator) {
 
 // Function to catch numbers, update variables and show them in the display
 const typedText = document.querySelector('#calc-typed');
-const upperText = document.querySelector('#calc-operation');
+const operationText = document.querySelector('#calc-operation');
 
 const btnsHolder = document.querySelector('#calc-button-row');
 const numberBtns = document.querySelectorAll('.number');
@@ -66,6 +66,10 @@ const optionBtns = document.querySelectorAll('.option');
 const clearBtn = document.querySelector('#ac');
 const deleteBtn = document.querySelector('#delete');
 const equalBtn = document.querySelector('#equal');
+
+// Starting of the display
+typedText.textContent = '0';
+operationText.textContent = '';
 
 // btns.addEventListener('click', (e) => {
 //   if (numberOne.length + operator.length + numberTwo.length <= 15) {
