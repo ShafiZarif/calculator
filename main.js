@@ -78,21 +78,28 @@ btns.addEventListener('click', (e) => {
         return;
       }
     }
-    if (e.target.id === 'equal') {
-      let result = operate(numberOne, operator, numberTwo);
-      if (numberOne !== '' && numberTwo !== '' && operator !== '') {
-        sum = result;
-        typedText.textContent = sum;
-        numberOne = String(sum);
-      } else if (numberOne === '' && operator === '' && numberTwo === '') {
-        sum = 0;
-        typedText.textContent = String(sum);
-      } else {
-        numberOne = result;
-        typedText.textContent = numberOne + operator + numberTwo;
-      }
-      console.log(sum);
+  } else if (e.target.id === 'equal') {
+    let result = operate(numberOne, operator, numberTwo);
+    const splitted = String(result).split('.');
+    if (numberOne !== '' && numberTwo !== '' && operator !== '') {
+      sum = result;
+      typedText.textContent = sum;
+      numberOne = String(sum);
+    } else if (numberOne === '' && operator === '' && numberTwo === '') {
+      sum = 0;
+      typedText.textContent = String(sum);
+    } else if (
+      String(result).includes('.') &&
+      splitted[0].length + 1 + splitted[1].length === 15
+    ) {
+      let numberToFixed = 15 - (1 + splitted[0].length);
+      let fixedResult = result.toFixed(numberToFixed);
+      typedText.textContent = fixedResult;
+    } else {
+      numberOne = result;
+      typedText.textContent = numberOne + operator + numberTwo;
     }
+    console.log(sum);
   } else {
     return;
   }
