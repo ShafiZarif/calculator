@@ -1,3 +1,4 @@
+// Got it from AI, to be replaced and I will. 😔 I am sorry.
 // --- 1. Basic Math Functions ---
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
