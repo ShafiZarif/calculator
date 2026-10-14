@@ -25,17 +25,35 @@ let operator = '';
 let sum = 0;
 
 // Operator function
-const operate = function (numberOne, operator, numberTwo) {
-  if (operator === '+') {
-    return add(numberOne, numberTwo);
-  } else if (operator === '-') {
-    return subtract(numberOne, numberTwo);
-  } else if (operator === '×') {
-    return multiply(numberOne, numberTwo);
-  } else if (operator === '÷') {
-    return divide(numberOne, numberTwo);
+// const operate = function (numberOne, operator, numberTwo) {
+//   if (operator === '+') {
+//     return add(numberOne, numberTwo);
+//   } else if (operator === '-') {
+//     return subtract(numberOne, numberTwo);
+//   } else if (operator === '×') {
+//     return multiply(numberOne, numberTwo);
+//   } else if (operator === '÷') {
+//     return divide(numberOne, numberTwo);
+//   }
+// };
+
+function operate(a, b, operator) {
+  const num1 = Number(a);
+  const num2 = Number(b);
+
+  switch (operator) {
+    case '+':
+      return add(num1, num2);
+    case '-':
+      return subtract(num1, num2);
+    case '×':
+      return multiply(num1, num2);
+    case '÷':
+      return divide(num1, num2);
+    default:
+      return null;
   }
-};
+}
 
 // Function to catch numbers, update variables and show them in the display
 const btns = document.querySelector('#calc-button-row');
