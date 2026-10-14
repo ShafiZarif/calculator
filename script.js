@@ -34,8 +34,6 @@ const operate = function (numberOne, operator, numberTwo) {
     return multiply(numberOne, numberTwo);
   } else if (operator === '÷') {
     return divide(numberOne, numberTwo);
-  } else {
-    return console.log(`'Invalid operator entered: ${operator}`);
   }
 };
 
