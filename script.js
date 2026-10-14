@@ -56,69 +56,76 @@ function operate(a, b, operator) {
 }
 
 // Function to catch numbers, update variables and show them in the display
-const btns = document.querySelector('#calc-button-row');
-
 const typedText = document.querySelector('#calc-typed');
+const upperText = document.querySelector('#calc-operation');
 
-btns.addEventListener('click', (e) => {
-  if (numberOne.length + operator.length + numberTwo.length <= 15) {
-    if (e.target.classList.contains('number')) {
-      //  console.log(e.target.textContent)
-      if (operator === '') {
-        numberOne += e.target.textContent;
-        typedText.textContent = numberOne + operator + numberTwo;
-      } else if (operator !== '' && numberOne !== '') {
-        numberTwo += e.target.textContent;
-        typedText.textContent = numberOne + operator + numberTwo;
-      } else {
-        numberTwo += e.target.textContent;
-        typedText.textContent = numberOne + operator + numberTwo;
-      }
-    }
-    if (e.target.classList.contains('option')) {
-      // console.log(`option was clicked`)
-      if (operator.length < 1) {
-        operator += e.target.textContent;
-        typedText.textContent = numberOne + operator + numberTwo;
-      } else if (operator.length === 1 && sum === 0 && numberTwo === '') {
-        operator = e.target.textContent;
-        typedText.textContent = numberOne + operator + numberTwo;
-      } else if (operator.length === 1 && numberTwo !== '') {
-        let result = operate(numberOne, operator, numberTwo);
-        operator = '';
-        numberTwo = '';
-        operator += e.target.textContent;
-        numberOne = String(result);
-        typedText.textContent = numberOne + operator + numberTwo;
-      } else {
-        return;
-      }
-    }
-    if (e.target.id === 'equal') {
-      let result = operate(numberOne, operator, numberTwo);
-      const splitted = String(result).split('.');
-      if (numberOne !== '' && numberTwo !== '' && operator !== '') {
-        sum = result;
-        typedText.textContent = sum;
-        numberOne = String(sum);
-      } else if (numberOne === '' && operator === '' && numberTwo === '') {
-        sum = 0;
-        typedText.textContent = String(sum);
-      } else if (
-        String(result).includes('.') &&
-        splitted[0].length + 1 + splitted[1].length === 15
-      ) {
-        let numberToFixed = 15 - (1 + splitted[0].length);
-        let fixedResult = result.toFixed(numberToFixed);
-        typedText.textContent = fixedResult;
-        numberOne = String(fixedResult);
-      } else {
-        numberOne = result;
-        typedText.textContent = numberOne + operator + numberTwo;
-      }
-      console.log(sum);
-    }
-  } else {
-    return;
-  }
-});
+const btnsHolder = document.querySelector('#calc-button-row');
+const numberBtns = document.querySelectorAll('.number');
+const optionBtns = document.querySelectorAll('.option');
+
+const clearBtn = document.querySelector('#ac');
+const deleteBtn = document.querySelector('#delete');
+const equalBtn = document.querySelector('#equal');
+
+// btns.addEventListener('click', (e) => {
+//   if (numberOne.length + operator.length + numberTwo.length <= 15) {
+//     if (e.target.classList.contains('number')) {
+//       //  console.log(e.target.textContent)
+//       if (operator === '') {
+//         numberOne += e.target.textContent;
+//         typedText.textContent = numberOne + operator + numberTwo;
+//       } else if (operator !== '' && numberOne !== '') {
+//         numberTwo += e.target.textContent;
+//         typedText.textContent = numberOne + operator + numberTwo;
+//       } else {
+//         numberTwo += e.target.textContent;
+//         typedText.textContent = numberOne + operator + numberTwo;
+//       }
+//     }
+//     if (e.target.classList.contains('option')) {
+//       // console.log(`option was clicked`)
+//       if (operator.length < 1) {
+//         operator += e.target.textContent;
+//         typedText.textContent = numberOne + operator + numberTwo;
+//       } else if (operator.length === 1 && sum === 0 && numberTwo === '') {
+//         operator = e.target.textContent;
+//         typedText.textContent = numberOne + operator + numberTwo;
+//       } else if (operator.length === 1 && numberTwo !== '') {
+//         let result = operate(numberOne, operator, numberTwo);
+//         operator = '';
+//         numberTwo = '';
+//         operator += e.target.textContent;
+//         numberOne = String(result);
+//         typedText.textContent = numberOne + operator + numberTwo;
+//       } else {
+//         return;
+//       }
+//     }
+//     if (e.target.id === 'equal') {
+//       let result = operate(numberOne, operator, numberTwo);
+//       const splitted = String(result).split('.');
+//       if (numberOne !== '' && numberTwo !== '' && operator !== '') {
+//         sum = result;
+//         typedText.textContent = sum;
+//         numberOne = String(sum);
+//       } else if (numberOne === '' && operator === '' && numberTwo === '') {
+//         sum = 0;
+//         typedText.textContent = String(sum);
+//       } else if (
+//         String(result).includes('.') &&
+//         splitted[0].length + 1 + splitted[1].length === 15
+//       ) {
+//         let numberToFixed = 15 - (1 + splitted[0].length);
+//         let fixedResult = result.toFixed(numberToFixed);
+//         typedText.textContent = fixedResult;
+//         numberOne = String(fixedResult);
+//       } else {
+//         numberOne = result;
+//         typedText.textContent = numberOne + operator + numberTwo;
+//       }
+//       console.log(sum);
+//     }
+//   } else {
+//     return;
+//   }
+// });
