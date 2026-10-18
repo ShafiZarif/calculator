@@ -65,6 +65,8 @@ function clearAll() {
   numberOne = '';
   numberTwo = '';
   operator = '';
+  typedText.textContent = '0';
+  operationText.textContent = '';
 }
 // btns.addEventListener('click', (e) => {
 //   if (numberOne.length + operator.length + numberTwo.length <= 15) {
