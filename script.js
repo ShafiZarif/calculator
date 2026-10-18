@@ -15,7 +15,7 @@ const multiply = function (firstNumber, secondNumber) {
 
 // Divide
 const divide = function (firstNumber, secondNumber) {
-  return firstNumber / secondNumber;
+  return secondNumber === 0 ? 'Nice try! 🚫' : firstNumber / secondNumber;
 };
 
 // Creating Variables for operations
