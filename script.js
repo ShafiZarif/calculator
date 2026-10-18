@@ -72,7 +72,7 @@ function clearAll() {
 
 // Digit append
 function handleNumbers(digit) {
-  if (operate === '') {
+  if (operator === '') {
     numberOne += String(digit);
     typedText.textContent = numberOne;
   } else {
