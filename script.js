@@ -82,7 +82,7 @@ function handleNumbers(digit) {
 }
 
 // Event listeners
-acBtn.addEventListener('click', (e) => {
+clearBtn.addEventListener('click', (e) => {
   clearAll();
 });
 
