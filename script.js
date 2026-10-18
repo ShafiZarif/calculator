@@ -86,8 +86,10 @@ clearBtn.addEventListener('click', (e) => {
   clearAll();
 });
 
-numberBtns.addEventListener('click', (e) => {
-  handleNumbers();
+numberBtns.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    handleNumbers(e.target.textContent);
+  });
 });
 // btns.addEventListener('click', (e) => {
 //   if (numberOne.length + operator.length + numberTwo.length <= 15) {
