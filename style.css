@@ -18,9 +18,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 275px;
+  width: 50%;
   margin: auto;
-  min-height: 400px;
+  min-height: 500px;
   box-shadow: 0 8px 50px -7px black;
   background: #3a4655;
   border-radius: 12px;
