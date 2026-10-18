@@ -81,6 +81,8 @@ function handleNumbers(digit) {
   }
 }
 
+// Operator handler
+
 // Event listeners
 clearBtn.addEventListener('click', (e) => {
   clearAll();
