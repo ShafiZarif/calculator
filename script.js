@@ -46,7 +46,6 @@ function operate(a, b, operator) {
 
 // Function to catch numbers, update variables and show them in the display
 const typedText = document.querySelector('#calc-typed');
-const operationText = document.querySelector('#calc-operation');
 
 const btnsHolder = document.querySelector('#calc-button-row');
 const numberBtns = document.querySelectorAll('.number');
@@ -58,7 +57,6 @@ const equalBtn = document.querySelector('#equal');
 
 // Starting of the display
 typedText.textContent = '0';
-operationText.textContent = '';
 
 // Clear function
 function clearAll() {
@@ -67,7 +65,6 @@ function clearAll() {
   operator = '';
   sum = 0;
   typedText.textContent = '0';
-  operationText.textContent = '';
 }
 
 // Digit append
@@ -82,7 +79,10 @@ function handleNumbers(digit) {
 }
 
 // Operator handler
-
+function handleOperators(sign) {
+  operator === '';
+  typedText.textContent += operator;
+}
 // Event listeners
 clearBtn.addEventListener('click', (e) => {
   clearAll();
