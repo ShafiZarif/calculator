@@ -90,8 +90,29 @@ body {
   color: #ffbc56;
 }
 
+/* Base state – add transition so the effect eases back on release */
 #calc-button-row button#equal {
-  color: greenyellow;
+  color: whitesmoke;
+  background-color: rgb(93, 159, 186);
+  transition:
+    background-color 0.12s ease,
+    box-shadow 0.08s ease,
+    transform 0.08s ease;
+  -webkit-tap-highlight-color: transparent; /* kill mobile flash */
+  touch-action: manipulation;
+}
+
+/* Hover – slightly brighter */
+#calc-button-row button#equal:hover {
+  background-color: rgb(108, 176, 204);
+}
+
+/* Press – darker, inset shadow, pushed down + squished */
+#calc-button-row button#equal:active {
+  background-color: rgb(70, 128, 153);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.45);
+  transform: translateY(2px) scale(0.97);
+  top: 0; /* cancel the global 1px top shift so it doesn't double up */
 }
 
 #calc-button-row button.zero {
