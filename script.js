@@ -25,17 +25,6 @@ let operator = '';
 let sum = 0;
 
 // Operator function
-// const operate = function (numberOne, operator, numberTwo) {
-//   if (operator === '+') {
-//     return add(numberOne, numberTwo);
-//   } else if (operator === '-') {
-//     return subtract(numberOne, numberTwo);
-//   } else if (operator === '×') {
-//     return multiply(numberOne, numberTwo);
-//   } else if (operator === '÷') {
-//     return divide(numberOne, numberTwo);
-//   }
-// };
 
 function operate(a, b, operator) {
   const num1 = Number(a);
