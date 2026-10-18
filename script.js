@@ -70,8 +70,18 @@ function clearAll() {
   operationText.textContent = '';
 }
 
-// Event listeners
+// Digit append
+function handleNumbers(digit) {
+  if (operate === '') {
+    numberOne += String(digit);
+    typedText.textContent = numberOne;
+  } else {
+    numberTwo += String(digit);
+    typedText.textContent = numberTwo;
+  }
+}
 
+// Event listeners
 acBtn.addEventListener('click', (e) => {
   clearAll();
 });
