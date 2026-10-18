@@ -134,13 +134,35 @@ body {
   top: 0;
 }
 
-#calc-button-row button.option {
-  color: #ffbc56;
-}
-
+/* Base state – add transition so the effect eases back on release */
 #calc-button-row button#equal {
   color: whitesmoke;
-  background-color: rgb(93, 159, 186);
+  background-color: rgb(66, 158, 92); /* traffic-light green */
+  transition:
+    background-color 0.12s ease,
+    box-shadow 0.08s ease,
+    transform 0.08s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Hover – slightly brighter */
+#calc-button-row button#equal:hover {
+  background-color: rgb(84, 180, 112);
+}
+
+/* Press – darker, inset shadow, pushed down + squished */
+#calc-button-row button#equal:active {
+  background-color: rgb(48, 126, 74); /* deep forest green */
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transform: translateY(2px) scale(0.97);
+  top: 0;
+}
+
+#calc-button-row button.option {
+  color: #ffbc56;
 }
 
 #calc-button-row button.zero {
