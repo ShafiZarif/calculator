@@ -72,6 +72,9 @@ function clearAll() {
 
 // Event listeners
 
+acBtn.addEventListener('click', (e) => {
+  clearAll();
+});
 // btns.addEventListener('click', (e) => {
 //   if (numberOne.length + operator.length + numberTwo.length <= 15) {
 //     if (e.target.classList.contains('number')) {
