@@ -65,6 +65,7 @@ function clearAll() {
   numberOne = '';
   numberTwo = '';
   operator = '';
+  sum = 0;
   typedText.textContent = '0';
   operationText.textContent = '';
 }
