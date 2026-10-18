@@ -60,6 +60,12 @@ const equalBtn = document.querySelector('#equal');
 typedText.textContent = '0';
 operationText.textContent = '';
 
+// Clear function
+function clearAll() {
+  numberOne = '';
+  numberTwo = '';
+  operator = '';
+}
 // btns.addEventListener('click', (e) => {
 //   if (numberOne.length + operator.length + numberTwo.length <= 15) {
 //     if (e.target.classList.contains('number')) {
