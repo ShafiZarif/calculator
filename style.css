@@ -79,6 +79,11 @@ body {
 
 #calc-button-row #ac {
   color: #ff7665;
+  width: 50%;
+}
+
+#calc-button-row #delete {
+  width: 50%;
 }
 
 #calc-button-row button.option {
@@ -90,7 +95,7 @@ body {
 }
 
 #calc-button-row button.zero {
-  width: 50%;
+  width: 25%;
 }
 
 #calc-button-row button:active {
