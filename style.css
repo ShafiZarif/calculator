@@ -84,8 +84,28 @@ body {
 }
 
 #calc-button-row #ac {
-  color: #ff7665;
+  color: #fff;
   width: 50%;
+  background-color: rgb(198, 72, 64); /* strong red base */
+  transition:
+    background-color 0.12s ease,
+    box-shadow 0.08s ease,
+    transform 0.08s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+#calc-button-row #ac:hover {
+  background-color: rgb(219, 86, 77); /* brighter red */
+}
+
+#calc-button-row #ac:active {
+  background-color: rgb(156, 52, 46); /* deep crimson */
+  box-shadow:
+    inset 0 3px 8px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transform: translateY(2px) scale(0.97);
+  top: 0;
 }
 
 #calc-button-row #delete {
