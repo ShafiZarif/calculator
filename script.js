@@ -89,6 +89,10 @@ function handleOperators(sign) {
 }
 
 // Math operator
+function mathOperator() {
+  sum += operate(numberOne, numberTwo, operator);
+  typedText.textContent = String(sum);
+}
 
 // Event listeners
 clearBtn.addEventListener('click', (e) => {
