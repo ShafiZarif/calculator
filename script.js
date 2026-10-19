@@ -74,14 +74,18 @@ function handleNumbers(digit) {
     typedText.textContent = numberOne;
   } else {
     numberTwo += String(digit);
-    typedText.textContent = numberTwo;
+    typedText.textContent += numberTwo;
   }
 }
 
 // Operator handler
 function handleOperators(sign) {
-  operator === '';
-  typedText.textContent += operator;
+  if (operator === '') {
+    operator = sign;
+    typedText.textContent += sign;
+  } else {
+    return;
+  }
 }
 // Event listeners
 clearBtn.addEventListener('click', (e) => {
@@ -91,6 +95,12 @@ clearBtn.addEventListener('click', (e) => {
 numberBtns.forEach((button) => {
   button.addEventListener('click', (e) => {
     handleNumbers(e.target.textContent);
+  });
+});
+
+optionBtns.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    handleOperators(e.target.textContent);
   });
 });
 // btns.addEventListener('click', (e) => {
