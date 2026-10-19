@@ -111,6 +111,9 @@ optionBtns.forEach((button) => {
   });
 });
 
+equalBtn.addEventListener('click', () => {
+  mathOperator();
+});
 // btns.addEventListener('click', (e) => {
 //   if (numberOne.length + operator.length + numberTwo.length <= 15) {
 //     if (e.target.classList.contains('number')) {
