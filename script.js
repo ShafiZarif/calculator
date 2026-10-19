@@ -87,6 +87,9 @@ function handleOperators(sign) {
     return;
   }
 }
+
+// Math operator
+
 // Event listeners
 clearBtn.addEventListener('click', (e) => {
   clearAll();
@@ -103,6 +106,7 @@ optionBtns.forEach((button) => {
     handleOperators(e.target.textContent);
   });
 });
+
 // btns.addEventListener('click', (e) => {
 //   if (numberOne.length + operator.length + numberTwo.length <= 15) {
 //     if (e.target.classList.contains('number')) {
