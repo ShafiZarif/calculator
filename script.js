@@ -23,25 +23,36 @@ let numberOne = '';
 let numberTwo = '';
 let operator = '';
 let sum = 0;
+let shouldResetDisplay = false;
 
 // Operator function
-
 function operate(a, b, operator) {
   const num1 = Number(a);
   const num2 = Number(b);
 
+  let result;
   switch (operator) {
     case '+':
-      return add(num1, num2);
+      result = add(num1, num2);
+      break;
     case '-':
-      return subtract(num1, num2);
+      result = subtract(num1, num2);
+      break;
     case '×':
-      return multiply(num1, num2);
+    case '*':
+      result = multiply(num1, num2);
+      break;
     case '÷':
-      return divide(num1, num2);
+    case '/':
+      result = divide(num1, num2);
+      break;
     default:
       return null;
   }
+
+  if (typeof result === 'string') return result;
+  // Precision rounding to prevent display overflow and float bugs
+  return Math.round(result * 1000000) / 1000000;
 }
 
 // Function to catch numbers, update variables and show them in the display
@@ -64,115 +75,139 @@ function clearAll() {
   numberTwo = '';
   operator = '';
   sum = 0;
+  shouldResetDisplay = false;
   typedText.textContent = '0';
 }
 
 // Digit append
 function handleNumbers(digit) {
+  if (typedText.textContent === 'Nice try! 🚫' || shouldResetDisplay) {
+    clearAll();
+  }
+
+  // Handle decimal input
+  if (digit === '.') {
+    if (operator === '') {
+      if (numberOne.includes('.')) return;
+      numberOne = numberOne === '' ? '0.' : numberOne + '.';
+      typedText.textContent = numberOne;
+    } else {
+      if (numberTwo.includes('.')) return;
+      numberTwo = numberTwo === '' ? '0.' : numberTwo + '.';
+      typedText.textContent = numberOne + operator + numberTwo;
+    }
+    return;
+  }
+
+  // Handle numbers
   if (operator === '') {
-    numberOne += String(digit);
+    if (numberOne === '0' && digit === '0') return;
+    numberOne = numberOne === '0' ? String(digit) : numberOne + String(digit);
     typedText.textContent = numberOne;
   } else {
-    numberTwo += String(digit);
-    typedText.textContent += numberTwo;
+    if (numberTwo === '0' && digit === '0') return;
+    numberTwo = numberTwo === '0' ? String(digit) : numberTwo + String(digit);
+    typedText.textContent = numberOne + operator + numberTwo;
   }
 }
 
 // Operator handler
 function handleOperators(sign) {
-  if (operator === '') {
-    operator = sign;
-    typedText.textContent += sign;
-  } else {
-    return;
+  if (typedText.textContent === 'Nice try! 🚫') return;
+
+  if (shouldResetDisplay) {
+    shouldResetDisplay = false;
   }
+
+  // Set default first number if empty
+  if (numberOne === '') {
+    numberOne = '0';
+  }
+
+  // Operator chaining: evaluate existing pair first
+  if (operator !== '' && numberTwo !== '') {
+    mathOperator();
+    if (typedText.textContent === 'Nice try! 🚫') return;
+  }
+
+  operator = sign;
+  typedText.textContent = numberOne + operator;
 }
 
 // Math operator
 function mathOperator() {
-  sum += operate(numberOne, numberTwo, operator);
+  if (numberOne === '' || operator === '' || numberTwo === '') return;
+
+  sum = operate(numberOne, numberTwo, operator);
+
+  if (sum === 'Nice try! 🚫') {
+    typedText.textContent = sum;
+    numberOne = '';
+    numberTwo = '';
+    operator = '';
+    shouldResetDisplay = true;
+    return;
+  }
+
   typedText.textContent = String(sum);
+  numberOne = String(sum);
+  numberTwo = '';
+  operator = '';
+  shouldResetDisplay = true;
+}
+
+// Backspace handler
+function handleDelete() {
+  if (shouldResetDisplay || typedText.textContent === 'Nice try! 🚫') return;
+
+  if (numberTwo !== '') {
+    numberTwo = numberTwo.slice(0, -1);
+    typedText.textContent = numberOne + operator + numberTwo;
+  } else if (operator !== '') {
+    operator = '';
+    typedText.textContent = numberOne;
+  } else if (numberOne !== '') {
+    numberOne = numberOne.slice(0, -1);
+    typedText.textContent = numberOne === '' ? '0' : numberOne;
+  }
 }
 
 // Event listeners
-clearBtn.addEventListener('click', (e) => {
-  clearAll();
-});
+clearBtn.addEventListener('click', clearAll);
+
+deleteBtn.addEventListener('click', handleDelete);
 
 numberBtns.forEach((button) => {
   button.addEventListener('click', (e) => {
-    handleNumbers(e.target.textContent);
+    handleNumbers(e.target.textContent.trim());
   });
 });
 
 optionBtns.forEach((button) => {
   button.addEventListener('click', (e) => {
-    handleOperators(e.target.textContent);
+    handleOperators(e.target.textContent.trim());
   });
 });
 
-equalBtn.addEventListener('click', () => {
-  mathOperator();
+equalBtn.addEventListener('click', mathOperator);
+
+// Keyboard Support (Extra Credit)
+window.addEventListener('keydown', (e) => {
+  if ((e.key >= '0' && e.key <= '9') || e.key === '.') {
+    handleNumbers(e.key);
+  } else if (e.key === '+' || e.key === '-') {
+    handleOperators(e.key);
+  } else if (e.key === '*') {
+    handleOperators('×');
+  } else if (e.key === '/') {
+    e.preventDefault();
+    handleOperators('÷');
+  } else if (e.key === '=' || e.key === 'Enter') {
+    e.preventDefault();
+    mathOperator();
+  } else if (e.key === 'Backspace') {
+    handleDelete();
+  } else if (e.key === 'Escape') {
+    clearAll();
+  }
 });
-// btns.addEventListener('click', (e) => {
-//   if (numberOne.length + operator.length + numberTwo.length <= 15) {
-//     if (e.target.classList.contains('number')) {
-//       //  console.log(e.target.textContent)
-//       if (operator === '') {
-//         numberOne += e.target.textContent;
-//         typedText.textContent = numberOne + operator + numberTwo;
-//       } else if (operator !== '' && numberOne !== '') {
-//         numberTwo += e.target.textContent;
-//         typedText.textContent = numberOne + operator + numberTwo;
-//       } else {
-//         numberTwo += e.target.textContent;
-//         typedText.textContent = numberOne + operator + numberTwo;
-//       }
-//     }
-//     if (e.target.classList.contains('option')) {
-//       // console.log(`option was clicked`)
-//       if (operator.length < 1) {
-//         operator += e.target.textContent;
-//         typedText.textContent = numberOne + operator + numberTwo;
-//       } else if (operator.length === 1 && sum === 0 && numberTwo === '') {
-//         operator = e.target.textContent;
-//         typedText.textContent = numberOne + operator + numberTwo;
-//       } else if (operator.length === 1 && numberTwo !== '') {
-//         let result = operate(numberOne, operator, numberTwo);
-//         operator = '';
-//         numberTwo = '';
-//         operator += e.target.textContent;
-//         numberOne = String(result);
-//         typedText.textContent = numberOne + operator + numberTwo;
-//       } else {
-//         return;
-//       }
-//     }
-//     if (e.target.id === 'equal') {
-//       let result = operate(numberOne, operator, numberTwo);
-//       const splitted = String(result).split('.');
-//       if (numberOne !== '' && numberTwo !== '' && operator !== '') {
-//         sum = result;
-//         typedText.textContent = sum;
-//         numberOne = String(sum);
-//       } else if (numberOne === '' && operator === '' && numberTwo === '') {
-//         sum = 0;
-//         typedText.textContent = String(sum);
-//       } else if (
-//         String(result).includes('.') &&
-//         splitted[0].length + 1 + splitted[1].length === 15
-//       ) {
-//         let numberToFixed = 15 - (1 + splitted[0].length);
-//         let fixedResult = result.toFixed(numberToFixed);
-//         typedText.textContent = fixedResult;
-//         numberOne = String(fixedResult);
-//       } else {
-//         numberOne = result;
-//         typedText.textContent = numberOne + operator + numberTwo;
-//       }
-//       console.log(sum);
-//     }
-//   } else {
-//     return;
-//   }
-// });

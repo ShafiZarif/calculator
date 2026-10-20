@@ -18,9 +18,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 50%;
+  width: 280px;
   margin: auto;
-  min-height: 500px;
+  min-height: 400px;
   box-shadow: 0 8px 50px -7px black;
   background: #3a4655;
   border-radius: 12px;
@@ -30,20 +30,20 @@ body {
 /* Calculator Display Screen */
 #calc-screen {
   padding: 1rem;
-  height: 20%;
+  height: 90px;
   box-sizing: border-box;
-}
-
-#calc-typed {
-  min-height: 0;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+#calc-typed {
   font-size: 2rem;
   color: white;
   line-height: 2.5rem;
   overflow: hidden;
   white-space: nowrap;
+  word-break: normal;
 }
 
 /* Calculator Buttons */
@@ -74,79 +74,56 @@ body {
 #calc-button-row #ac {
   color: #fff;
   width: 50%;
-  background-color: rgb(198, 72, 64); /* strong red base */
-  transition:
-    background-color 0.12s ease,
-    box-shadow 0.08s ease,
-    transform 0.08s ease;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+  background-color: rgb(198, 72, 64);
 }
 
 #calc-button-row #ac:hover {
-  background-color: rgb(219, 86, 77); /* brighter red */
+  background-color: rgb(219, 86, 77);
 }
 
 #calc-button-row #ac:active {
-  background-color: rgb(156, 52, 46); /* deep crimson */
+  background-color: rgb(156, 52, 46);
   box-shadow:
     inset 0 3px 8px rgba(0, 0, 0, 0.55),
     inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   transform: translateY(2px) scale(0.97);
-  top: 0;
 }
 
-/* ---------- Delete key (amber) ---------- */
+/* Delete key */
 #calc-button-row #delete {
   color: #fff;
   width: 50%;
-  background-color: rgb(206, 146, 48); /* warm amber base */
-  transition:
-    background-color 0.12s ease,
-    box-shadow 0.08s ease,
-    transform 0.08s ease;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+  background-color: rgb(206, 146, 48);
 }
 
 #calc-button-row #delete:hover {
-  background-color: rgb(226, 166, 66); /* brighter amber */
+  background-color: rgb(226, 166, 66);
 }
 
 #calc-button-row #delete:active {
-  background-color: rgb(168, 114, 32); /* deep amber/bronze */
+  background-color: rgb(168, 114, 32);
   box-shadow:
     inset 0 3px 8px rgba(0, 0, 0, 0.55),
     inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   transform: translateY(2px) scale(0.97);
-  top: 0;
 }
 
-/* Base state – add transition so the effect eases back on release */
+/* Equal button */
 #calc-button-row button#equal {
   color: whitesmoke;
-  background-color: rgb(66, 158, 92); /* traffic-light green */
-  transition:
-    background-color 0.12s ease,
-    box-shadow 0.08s ease,
-    transform 0.08s ease;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+  background-color: rgb(66, 158, 92);
 }
 
-/* Hover – slightly brighter */
 #calc-button-row button#equal:hover {
   background-color: rgb(84, 180, 112);
 }
 
-/* Press – darker, inset shadow, pushed down + squished */
 #calc-button-row button#equal:active {
-  background-color: rgb(48, 126, 74); /* deep forest green */
+  background-color: rgb(48, 126, 74);
   box-shadow:
     inset 0 3px 8px rgba(0, 0, 0, 0.55),
     inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   transform: translateY(2px) scale(0.97);
-  top: 0;
 }
 
 #calc-button-row button.option {
